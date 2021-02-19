@@ -1,0 +1,31 @@
+<div class="container">
+  <img src="./assets/logo.svg" alt="sos logo">
+  <h3>Coming Soon</h3>
+  <p>A livestream platform <br> creating a new user experience</p>
+  <section class="notified" *ngIf="!registered">
+    <h2>Get notified when we launch</h2>
+  </section>
+  <form [formGroup]="form" class="email" (ngSubmit)="onSubmit()" *ngIf="!registered">
+    <input type="email" placeholder="Email" class='emailInput' (keyup)="validateEmail($event.target.value)" formControlName="email">
+    <button type="submit" (click)="isValid($event)">Get notified</button>
+  </form>
+
+  <p class="error" #error>
+    <img src="./assets/info.svg" alt="info"> {{ errorMsg }}
+  </p>
+
+  <img src="./assets/check.svg" alt="check" *ngIf="registered">
+
+  <section class="on-board" *ngIf="registered">
+    <h4>Great to see you on board! <br> You will get notified by email when studio on sunset launches</h4>
+    <p>Did you subscribe by accident? <a href="#" (click)="removeMe()">Click here to cancel</a></p>
+  </section>
+
+  <div class="follow">
+    <h4>Follow us on</h4>
+    <section class="socials">
+      <a href="#"><img src="./assets/ig.svg" alt="ig"></a>
+      <a href="#"><img src="./assets/fb.svg" alt="ig"></a>
+    </section>
+  </div>
+</div>
